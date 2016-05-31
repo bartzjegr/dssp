@@ -762,6 +762,15 @@
 	(macro getattr_nfs_fs ((type ARG1))
 		(allow ARG1 nfs.fs (filesystem (getattr))))
 
+	(macro mount_nsfs_fs ((type ARG1))
+		(allow ARG1 nsfs.fs (filesystem (mount))))
+
+	(macro unmount_nsfs_fs ((type ARG1))
+		(allow ARG1 nsfs.fs (filesystem (unmount))))
+
+	(macro remount_nsfs_fs ((type ARG1))
+		(allow ARG1 nsfs.fs (filesystem (remount))))
+
 	(macro read_nsfs_files ((type ARG1))
 		(call search_proc (ARG1))
 		(allow ARG1 nsfs.fs read_file_perms))
