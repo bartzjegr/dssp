@@ -314,7 +314,8 @@
 			(audit_access))))
 
 	(macro audit_write_access_mountpoint_dirs ((type ARG1))
-		(allow ARG1 mountpoint_obj_type_attribute (dir (write))))
+		(allow ARG1 mountpoint_obj_type_attribute (dir (getattr
+			write))))
 
 	(macro getattr_mountpoints ((type ARG1))
 		(allow ARG1 mountpoint_obj_type_attribute (file (getattr)))

@@ -319,6 +319,10 @@
 		(call fs.search_devtmpfs (ARG1))
 		(allow ARG1 dri.dev (chr_file (getattr))))
 
+	(macro getattr_event ((type ARG1))
+		(call fs.search_devtmpfs (ARG1))
+		(allow ARG1 event.dev (chr_file (getattr))))
+
 	(macro getattr_framebuf ((type ARG1))
 		(call fs.search_devtmpfs (ARG1))
 		(allow ARG1 framebuf.dev (chr_file (getattr))))

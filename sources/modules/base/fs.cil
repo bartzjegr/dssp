@@ -501,9 +501,6 @@
 		(allow ARG1 devtmpfs.fs list_dir_perms)
 		(allow ARG1 devtmpfs.fs read_lnk_file_perms))
 
-	(macro audit_access_devtmpfs_dirs ((type ARG1))
-		(allow ARG1 devtmpfs.fs (dir (write))))
-
 	(macro setattr_devtmpfs_dirs ((type ARG1))
 		(allow ARG1 devtmpfs.fs (dir (setattr))))
 
@@ -553,7 +550,7 @@
 		(dontaudit ARG1 devtmpfs.fs (blk_file (getattr))))
 
 	(macro audit_write_access_devtmpfs_dirs ((type ARG1))
-		(allow ARG1 devtmpfs.fs (dir (write))))
+		(allow ARG1 devtmpfs.fs (dir (getattr write))))
 
 	(macro manage_devtmpfs_dirs ((type ARG1))
 		(call manage_dirs_pattern (ARG1 devtmpfs.fs devtmpfs.fs)))
@@ -860,7 +857,7 @@
 		(allow ARG1 rootfs.fs search_dir_perms))
 
 	(macro audit_write_access_rootfs_dirs ((type ARG1))
-		(allow ARG1 rootfs.fs (dir (write))))
+		(allow ARG1 rootfs.fs (dir (getattr write))))
 
 	(macro dontaudit_list_rootfs ((type ARG1))
 		(dontaudit ARG1 rootfs.fs list_dir_perms))
@@ -898,7 +895,7 @@
 		(allow ARG1 sysfs.fs search_dir_perms))
 
 	(macro audit_write_access_sysfs_dirs ((type ARG1))
-		(dontaudit ARG1 sysfs.fs (dir (write))))
+		(dontaudit ARG1 sysfs.fs (dir (getattr write))))
 
 	(macro dontaudit_audit_access_sysfs_dirs ((type ARG1))
 		(dontaudit ARG1 sysfs.fs (dir (audit_access))))

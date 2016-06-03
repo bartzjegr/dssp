@@ -4695,7 +4695,7 @@
 		(allow ARG1 config.config_file list_dir_perms))
 
 	(macro audit_write_access_config_dirs ((type ARG1))
-		(allow ARG1 config.config_file (dir (write))))
+		(allow ARG1 config.config_file (dir (getattr write))))
 
 	(macro rw_config_dirs ((type ARG1))
 		(allow ARG1 config.config_file rw_dir_perms))
@@ -5731,7 +5731,7 @@
 		(allow ARG1 var_tmp.var_tmp_file read_file_perms))
 
 	(macro audit_write_access_var_tmp_dirs ((type ARG1))
-		(allow ARG1 var_tmp.var_tmp_file (dir (write))))
+		(allow ARG1 var_tmp.var_tmp_file (dir (getattr write))))
 
 	(macro dontaudit_audit_access_var_tmp_dirs ((type ARG1))
 		(dontaudit ARG1 var_tmp.var_tmp_file (dir (audit_access))))
@@ -5930,6 +5930,9 @@
 	(macro mountpoint_obj_type_transition_lost_found ((type ARG1))
 		(call sys.mountpoint_obj_type_transition (ARG1 lost_found.file
 			dir "lost+found")))
+
+	(macro audit_write_access_mnt_dirs ((type ARG1))
+		(allow ARG1 mnt.file (dir (getattr write))))
 
 	(macro search_mnt ((type ARG1))
 		(call search_runtime (ARG1))
