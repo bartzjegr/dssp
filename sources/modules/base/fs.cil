@@ -708,6 +708,10 @@
 		(call search_devtmpfs (ARG1))
 		(call manage_files_pattern (ARG1 hugetlbfs.fs hugetlbfs.fs)))
 
+	(macro read_hugetlbfs_files ((type ARG1))
+		(call search_devtmpfs (ARG1))
+		(call read_files_pattern (ARG1 hugetlbfs.fs hugetlbfs.fs)))
+
 	(macro mount_hugetlbfs_fs ((type ARG1))
 		(allow ARG1 hugetlbfs.fs (filesystem (mount))))
 
