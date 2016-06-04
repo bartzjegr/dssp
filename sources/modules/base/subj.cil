@@ -109,6 +109,11 @@
 			(allow ARG1 self (process (setkeycreate)))
 			(allow ARG1 subj create_key_perms)))
 
+	(block search_keyring_blk
+		(blockabstract search_keyring_blk)
+		(macro search_keyring ((type ARG1))
+			(allow ARG1 subj (key (search)))))
+
 	(block read_state_blk
 		(blockabstract read_state_blk)
 		(macro read_state ((type ARG1))
@@ -248,6 +253,11 @@
 		(blockabstract link_keyring_all_blk)
 		(macro link_keyring_all_subj ((type ARG1))
 			(allow ARG1 subj_type_attribute link_key_perms)))
+
+	(block search_keyring_all_blk
+		(blockabstract search_keyring_all_blk)
+		(macro search_keyring_all_subj ((type ARG1))
+			(allow ARG1 subj_type_attribute (key (search)))))
 
 	(block read_state_all_blk
 		(blockabstract read_state_all_blk)
