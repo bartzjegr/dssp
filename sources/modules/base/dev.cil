@@ -928,6 +928,10 @@
 		(call fs.search_devtmpfs (ARG1))
 		(allow ARG1 kmsg_dev.dev write_chr_file_perms))
 
+	(macro write_pm_qos_misc ((type ARG1))
+		(call fs.search_devtmpfs (ARG1))
+		(allow ARG1 pm_qos_misc.dev write_chr_file_perms))
+
 	(macro create_mei_misc ((type ARG1))
 		(allow ARG1 self (capability (mknod)))
 		(call fs.add_entry_devtmpfs (ARG1))
