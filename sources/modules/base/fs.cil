@@ -403,18 +403,27 @@
 		(allow ARG1 cifs.fs (filesystem (getattr))))
 
 	(macro search_debugfs ((type ARG1))
+		(call search_sysfs (ARG1))
 		(call search_proc (ARG1))
 		(allow ARG1 debugfs.fs search_dir_perms))
 
 	(macro list_debugfs ((type ARG1))
+		(call search_sysfs (ARG1))
 		(call search_proc (ARG1))
 		(allow ARG1 debugfs.fs list_dir_perms))
 
 	(macro read_debugfs_files ((type ARG1))
+		(call search_sysfs (ARG1))
 		(call search_proc (ARG1))
 		(call read_files_pattern (ARG1 debugfs.fs debugfs.fs)))
 
+	(macro write_debugfs_files ((type ARG1))
+		(call search_sysfs (ARG1))
+		(call search_proc (ARG1))
+		(call write_files_pattern (ARG1 debugfs.fs debugfs.fs)))
+
 	(macro read_debugfs ((type ARG1))
+		(call search_sysfs (ARG1))
 		(call search_proc (ARG1))
 		(allow ARG1 debugfs.fs list_dir_perms)
 		(allow ARG1 debugfs.fs read_file_perms)
