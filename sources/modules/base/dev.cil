@@ -897,6 +897,9 @@
 	(macro setattr_dri ((type ARG1))
 		(allow ARG1 dri.dev (chr_file (setattr))))
 
+	(macro setattr_event ((type ARG1))
+		(allow ARG1 event.dev (chr_file (setattr))))
+
 	(macro setattr_framebuf ((type ARG1))
 		(allow ARG1 framebuf.dev (chr_file (setattr))))
 
