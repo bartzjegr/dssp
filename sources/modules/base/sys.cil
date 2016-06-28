@@ -282,6 +282,14 @@
 	(macro load_kernel_module_subj_type ((type ARG1))
 		(typeattributeset load_kernel_module_subj_type_attribute ARG1))
 
+	(macro kernel_module_obj_type ((type ARG1))
+		(typeattributeset kernel_module_obj_type_attribute ARG1))
+
+	(macro load_all_kernel_modules ((type ARG1))
+		(call load_kernel_module_subj_type (ARG1))
+		(allow ARG1 kernel_module_obj_type_attribute (system
+			(module_load))))
+
 	(macro read_kernel_message_subj_type ((type ARG1))
 		(call fs.search_proc (ARG1))
 		(allow ARG1 kmsg_proc.proc read_file_perms)
@@ -1143,6 +1151,22 @@
 		(call storage.devtmpfs_obj_type_transition_scsi_generic
 			(subj)))
 
+	(typeattribute kernel_module_obj_type_attribute)
+	(typeattribute not_kernel_module_obj_type_attribute)
+
+	(typeattribute
+		not_kernel_module_obj_type_attribute_or_load_kernel_module_subj_type_attribute)
+
+	(typeattributeset not_kernel_module_obj_type_attribute (not
+		kernel_module_obj_type_attribute))
+
+	(typeattributeset not_kernel_module_obj_type_attribute_or_load_kernel_module_subj_type_attribute
+		(not (not_kernel_module_obj_type_attribute
+			not_load_kernel_module_subj_type_attribute)))
+	(neverallow load_kernel_module_subj_type_attribute
+		not_kernel_module_obj_type_attribute_or_load_kernel_module_subj_type_attribute
+			(system (module_load)))
+
 	(typeattribute load_kernel_module_subj_type_attribute)
 	(typeattribute not_load_kernel_module_subj_type_attribute)
 
@@ -1272,7 +1296,7 @@
 	(allow unconfined_subj_type_attribute sysfs_obj_type_attribute
 		read_lnk_file_perms)
 
-	(call load_kernel_module_subj_type (unconfined_subj_type_attribute))
+	(call load_all_kernel_modules (unconfined_subj_type_attribute))
 
 	(call sys_obj_type (proc_obj_type_attribute))
 	(call sys_obj_type (sysctl_obj_type_attribute))
