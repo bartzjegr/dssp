@@ -1415,4 +1415,6 @@
 		(allow sys.load_kernel_module_subj_type_attribute self
 			(capability (sys_nice sys_module)))
 		(allow sys.load_kernel_module_subj_type_attribute sys.subj
-			(process (setsched))))))
+			(process (setsched)))
+		(allow sys.load_kernel_module_subj_type_attribute self
+			(system (module_load))))))

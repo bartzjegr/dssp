@@ -10,7 +10,7 @@
 
 (class system (ipc_info syslog_read syslog_mod syslog_console
 	module_request halt reboot status start stop undefined enable disable
-	reload))
+	reload module_load))
 
 (common capability (chown dac_override dac_read_search fowner fsetid kill setgid
 	setuid setpcap linux_immutable net_bind_service net_broadcast net_admin
