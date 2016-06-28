@@ -1174,6 +1174,9 @@
 		load_kernel_module_subj_type_attribute))
 	(neverallow not_load_kernel_module_subj_type_attribute self (capability
 		(sys_module)))
+	(neverallow not_load_kernel_module_subj_type_attribute
+		not_kernel_module_obj_type_attribute_or_load_kernel_module_subj_type_attribute
+			(system (module_load)))
 
 	(typeattribute read_kernel_message_subj_type_attribute)
 	(typeattribute
