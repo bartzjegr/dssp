@@ -15,6 +15,7 @@
 		(context devtty (sys.id sys.role devtty.dev (systemlow
 			systemlow)))
 		(context dri (sys.id sys.role dri.dev (systemlow systemlow)))
+		(context dpaux (sys.id sys.role dpaux.dev (systemlow systemlow)))
 		(context event (sys.id sys.role event.dev (systemlow
 			systemlow)))
 		(context framebuf (sys.id sys.role framebuf.dev (systemlow
@@ -71,6 +72,7 @@
 		(context devtty (sys.id object_r devtty.dev (systemlow
 			systemlow)))
 		(context dri (sys.id object_r dri.dev (systemlow systemlow)))
+		(context dpaux (sys.id object_r dpaux.dev (systemlow systemlow)))
 		(context event (sys.id object_r event.dev (systemlow
 			systemlow)))
 		(context framebuf (sys.id object_r framebuf.dev (systemlow
@@ -158,6 +160,7 @@
 (filecon "/dev/cpu_dma_latency" char pm_qos_misc)
 (filecon "/dev/cuse" char cuse)
 (filecon "/dev/dri/.+" char dri)
+(filecon "/dev/drm_dp_aux[0-9]+" char dpaux)
 (filecon "/dev/fb([0-9]+)?" char framebuf)
 (filecon "/dev/full" char null)
 (filecon "/dev/hidraw[0-9]+" char usb)
@@ -318,6 +321,10 @@
 	(macro getattr_dri ((type ARG1))
 		(call fs.search_devtmpfs (ARG1))
 		(allow ARG1 dri.dev (chr_file (getattr))))
+
+	(macro getattr_dpaux ((type ARG1))
+		(call fs.search_devtmpfs (ARG1))
+		(allow ARG1 dpaux.dev (chr_file (getattr))))
 
 	(macro getattr_event ((type ARG1))
 		(call fs.search_devtmpfs (ARG1))
@@ -790,6 +797,10 @@
 		(call fs.search_devtmpfs (ARG1))
 		(allow ARG1 dri.dev rw_chr_file_perms))
 
+	(macro rw_dpaux ((type ARG1))
+		(call fs.search_devtmpfs (ARG1))
+		(allow ARG1 dpaux.dev rw_chr_file_perms))
+
 	(macro rw_inherited_dri ((type ARG1))
 		(call fs.search_devtmpfs (ARG1))
 		(allow ARG1 dri.dev rw_inherited_chr_file_perms))
@@ -896,6 +907,9 @@
 
 	(macro setattr_dri ((type ARG1))
 		(allow ARG1 dri.dev (chr_file (setattr))))
+
+	(macro setattr_dpaux ((type ARG1))
+		(allow ARG1 dpaux.dev (chr_file (setattr))))
 
 	(macro setattr_event ((type ARG1))
 		(allow ARG1 event.dev (chr_file (setattr))))
@@ -1041,6 +1055,9 @@
 	(call fs.associate_tmpfs (dev)))
 
 (block dri
+	(blockinherit dev.obj_blk))
+
+(block dpaux
 	(blockinherit dev.obj_blk))
 
 (block event
