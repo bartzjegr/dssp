@@ -25,6 +25,7 @@
 (filecon "/usr/bin(/.*)?" any cmd)
 (filecon "/usr/bin/bash" file shell)
 (filecon "/usr/bin" symlink cmd)
+(filecon "/usr/lib/jvm/java-.*-openjdk-.*/jre/bin(/.*)?" any cmd)
 (filecon "/usr/libexec(/.*)?" any cmd)
 (filecon "/usr/sbin(/.*)?" any cmd)
 (filecon "/usr/sbin/nologin" file shell)
