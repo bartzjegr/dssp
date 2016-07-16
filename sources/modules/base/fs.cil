@@ -473,6 +473,9 @@
 	(macro remount_devpts_fs ((type ARG1))
 		(allow ARG1 devpts.fs (filesystem (remount))))
 
+	(macro unmount_devtmpfs_fs ((type ARG1))
+		(allow ARG1 devtmpfs.fs (filesystem (unmount))))
+
 	(macro dontaudit_list_devtmpfs ((type ARG1))
 		(dontaudit ARG1 devtmpfs.fs list_dir_perms))
 
@@ -613,6 +616,12 @@
 		(allow ARG1 dosfs.fs relabel_file_perms)
 		(allow ARG1 dosfs.fs relabel_dir_perms)
 		(allow ARG1 dosfs.fs relabel_lnk_file_perms))
+
+	(macro mount_dosfs_fs ((type ARG1))
+		(allow ARG1 dosfs.fs (filesystem (mount))))
+
+	(macro unmount_dosfs_fs ((type ARG1))
+		(allow ARG1 dosfs.fs (filesystem (unmount))))
 
 	(macro remount_dosfs_fs ((type ARG1))
 		(allow ARG1 dosfs.fs (filesystem (remount))))
@@ -793,6 +802,9 @@
 
 	(macro mount_proc_fs ((type ARG1))
 		(allow ARG1 proc.fs (filesystem (mount))))
+
+	(macro unmount_proc_fs ((type ARG1))
+		(allow ARG1 proc.fs (filesystem (unmount))))
 
 	(macro remount_proc_fs ((type ARG1))
 		(allow ARG1 proc.fs (filesystem (remount))))
