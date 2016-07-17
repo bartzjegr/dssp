@@ -584,6 +584,12 @@
 		(call obj_type_transition_pattern (ARG1 devtmpfs.fs ARG2 ARG3
 			ARG4)))
 
+	(macro dontaudit_relabelfrom_dosfs_fs ((type ARG1))
+		(dontaudit ARG1 dosfs.fs (filesystem (relabelfrom))))
+
+	(macro dontaudit_associate_dosfs ((type ARG1))
+		(dontaudit ARG1 dosfs.fs (filesystem (associate))))
+
 	(macro search_dosfs ((type ARG1))
 		(allow ARG1 dosfs.fs search_dir_perms))
 
