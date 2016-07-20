@@ -695,8 +695,10 @@
 	(allow unconfined_subj_type_attribute self
 		all_fifo_file_perms_except_mounton_and_execmod)
 
-	(allow unconfined_subj_type_attribute self (cap_userns (all)))
-	(allow unconfined_subj_type_attribute self (cap2_userns (all)))
+	(allow unconfined_subj_type_attribute self
+		all_cap_userns_perms_except_sys_module_sys_ptrace_and_sys_nice)
+	(allow unconfined_subj_type_attribute self
+		all_cap2_userns_perms_except_mac_override_and_mac_admin)
 
 	(allow unconfined_subj_type_attribute subj_type_attribute
 		all_process_perms_except_transition_dyntransition_setcurrent_execmem_execstack_and_execheap)

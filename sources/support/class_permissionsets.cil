@@ -31,6 +31,19 @@
 								audit_control
 									setfcap)))
 
+(classpermission
+	all_cap_userns_perms_except_sys_module_sys_ptrace_and_sys_nice)
+(classpermissionset
+	all_cap_userns_perms_except_sys_module_sys_ptrace_and_sys_nice
+	(cap_userns (chown dac_override dac_read_search fowner fsetid kill
+		setgid setuid setpcap linux_immutable net_bind_service
+			net_broadcast net_admin net_raw ipc_lock ipc_owner
+				sys_rawio sys_chroot sys_pacct sys_admin
+					sys_boot sys_resource sys_time
+						sys_tty_config mknod
+							lease audit_write
+								audit_control
+									setfcap)))
 (classpermission mount_fs_perms)
 (classpermissionset mount_fs_perms (filesystem (mount remount unmount
 	getattr)))
@@ -274,6 +287,10 @@
 (classpermission all_capability2_perms_except_mac_override_and_mac_admin)
 (classpermissionset all_capability2_perms_except_mac_override_and_mac_admin
 	(capability2 (audit_read syslog wake_alarm block_suspend)))
+
+(classpermission all_cap2_userns_perms_except_mac_override_and_mac_admin)
+(classpermissionset all_cap2_userns_perms_except_mac_override_and_mac_admin
+	(cap2_userns (audit_read syslog wake_alarm block_suspend)))
 
 (classpermission read_file_perms)
 (classpermission read_inherited_file_perms)
