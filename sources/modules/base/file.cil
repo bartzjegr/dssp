@@ -4697,6 +4697,9 @@
 	(macro audit_write_access_config_dirs ((type ARG1))
 		(allow ARG1 config.config_file (dir (getattr write))))
 
+	(macro mounton_config_dirs ((type ARG1))
+		(allow ARG1 config.config_file (dir (mounton))))
+
 	(macro rw_config_dirs ((type ARG1))
 		(allow ARG1 config.config_file rw_dir_perms))
 
