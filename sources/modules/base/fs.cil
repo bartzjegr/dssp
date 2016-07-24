@@ -637,18 +637,22 @@
 
 	(macro search_efivarfs ((type ARG1))
 		(call search_proc (ARG1))
+		(call search_sysfs (ARG1))
 		(allow ARG1 efivarfs.fs search_dir_perms))
 
 	(macro list_efivarfs ((type ARG1))
 		(call search_proc (ARG1))
+		(call search_sysfs (ARG1))
 		(allow ARG1 efivarfs.fs list_dir_perms))
 
 	(macro manage_efivarfs_files ((type ARG1))
 		(call search_proc (ARG1))
+		(call search_sysfs (ARG1))
 		(call manage_files_pattern (ARG1 efivarfs.fs efivarfs.fs)))
 
 	(macro read_efivarfs_files ((type ARG1))
 		(call search_proc (ARG1))
+		(call search_sysfs (ARG1))
 		(call read_files_pattern (ARG1 efivarfs.fs efivarfs.fs)))
 
 	(macro dontaudit_audit_access_fuse_dirs ((type ARG1))
