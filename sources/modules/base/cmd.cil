@@ -15,6 +15,7 @@
 		(context shell (sys.id object_r shell.cmd_file (systemlow
 			systemlow)))))
 
+(filecon "/etc/kernel/install\.d(/.*)?" file cmd)
 (filecon "/etc/kernel/postinst\.d(/.*)?" file cmd)
 (filecon "/etc/profile\.d(/.*)?" file cmd)
 (filecon "/etc/rc\.d/init\.d(/.*)?" file cmd)
@@ -26,6 +27,8 @@
 (filecon "/usr/bin/bash" file shell)
 (filecon "/usr/bin" symlink cmd)
 (filecon "/usr/lib/jvm/java-.*-openjdk-.*/jre/bin(/.*)?" any cmd)
+(filecon "/usr/lib/kernel/install\.d(/.*)? file cmd)
+(filecon "/usr/lib/kernel/postinst\.d(/.*)? file cmd)
 (filecon "/usr/libexec(/.*)?" any cmd)
 (filecon "/usr/sbin(/.*)?" any cmd)
 (filecon "/usr/sbin/nologin" file shell)
