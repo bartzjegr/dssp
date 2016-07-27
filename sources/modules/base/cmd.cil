@@ -55,6 +55,11 @@
 		(macro cmd_obj_entry_subj ((type ARG1))
 			(call subj.entry (ARG1 cmd_file))))
 
+        (block bounded_cmd_file_blk
+                (blockabstract bounded_cmd_file_blk)
+                (macro bounded_cmd_file ((type ARG1))
+                        (typebounds cmd_file ARG1)))
+
 	(block getattr_cmd_files_blk
 		(blockabstract getattr_cmd_files_blk)
 		(macro getattr_cmd_files ((type ARG1))

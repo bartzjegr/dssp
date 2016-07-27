@@ -63,9 +63,9 @@
 		(macro rbac_userrole ((user ARG1))
 			(userrole ARG1 role)))
 
-	(block bounded_blk
-		(blockabstract bounded_blk)
-		(macro bounded ((type ARG1))
+	(block bounded_subj_blk
+		(blockabstract bounded_subj_blk)
+		(macro bounded_subj ((type ARG1))
 			(typebounds subj ARG1)))
 
 	(block getattr_blk
