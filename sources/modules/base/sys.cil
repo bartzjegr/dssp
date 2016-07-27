@@ -896,6 +896,10 @@
 	(macro search_unlabeled ((type ARG1))
 		(allow ARG1 unlabeled.isid search_dir_perms))
 
+	(macro manage_unlabeled_files ((type ARG1))
+		(call manage_files_pattern (ARG1 unlabeled.isid
+			unlabeled.isid)))
+
 	(macro dontaudit_setattr_unlabeled_dirs ((type ARG1))
 		(dontaudit ARG1 unlabeled.isid (dir (setattr))))
 
