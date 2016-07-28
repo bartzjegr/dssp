@@ -1063,6 +1063,9 @@
 	(macro setattr_tmpfs_dirs ((type ARG1))
 		(allow ARG1 tmpfs.fs (dir (setattr))))
 
+	(macro delete_tmpfs_dirs ((type ARG1))
+		(call delete_dirs_pattern (ARG1 tmpfs.fs tmpfs.fs)))
+
 	(macro manage_tmpfs_dirs ((type ARG1))
 		(call search_devtmpfs (ARG1))
 		(call manage_dirs_pattern (ARG1 tmpfs.fs tmpfs.fs)))
