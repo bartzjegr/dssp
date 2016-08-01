@@ -4643,6 +4643,13 @@
 		(allow ARG1 boot.boot_file relabel_sock_file_perms)
 		(allow ARG1 boot.boot_file relabel_lnk_file_perms))
 
+	(macro relabelto_boot ((type ARG1))
+		(allow ARG1 boot.boot_file relabelto_file_perms)
+		(allow ARG1 boot.boot_file relabelto_dir_perms)
+		(allow ARG1 boot.boot_file relabelto_fifo_file_perms)
+		(allow ARG1 boot.boot_file relabelto_sock_file_perms)
+		(allow ARG1 boot.boot_file relabelto_lnk_file_perms))
+
 	(macro rw_boot_dirs ((type ARG1))
 		(allow ARG1 boot.boot_file rw_dir_perms))
 
