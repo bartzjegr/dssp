@@ -377,6 +377,7 @@
 (classpermission connected_unix_dgram_socket_perms)
 (classpermission create_netlink_route_socket_perms)
 (classpermission r_netlink_route_socket_perms)
+(classpermission rw_inherited_netlink_route_socket_perms)
 (classpermission create_netlink_tcpdiag_socket_perms)
 (classpermission r_netlink_tcpdiag_socket_perms)
 (classpermission rw_netlink_nflog_socket_perms)
@@ -627,6 +628,9 @@
 			(netlink_route_socket (create read getattr write
 				setattr append bind connect getopt setopt
 					shutdown nlmsg_read)))
+		(classpermissionset rw_inherited_netlink_route_socket_perms
+			(netlink_route_socket (read getattr write
+				append bind connect getopt setopt shutdown)))
 		(classpermissionset create_netlink_tcpdiag_socket_perms
 			(netlink_tcpdiag_socket (create read getattr write
 				setattr append bind connect getopt setopt
@@ -979,6 +983,9 @@
 			(netlink_route_socket (create ioctl read getattr write
 				setattr append bind connect getopt setopt
 					shutdown nlmsg_read)))
+		(classpermissionset rw_inherited_netlink_route_socket_perms
+			(netlink_route_socket (ioctl read getattr write
+				append bind connect getopt setopt shutdown)))
 		(classpermissionset create_netlink_tcpdiag_socket_perms
 			(netlink_tcpdiag_socket (create ioctl read getattr
 				write setattr append bind connect getopt setopt
