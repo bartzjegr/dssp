@@ -70,8 +70,14 @@
 		(macro mmap_cmd_files ((type ARG1))
 			(allow ARG1 cmd_file mmap_file_perms)))
 
+	(block exec_all_cmd_files_blk
+		(blockabstract exec_all_cmd_files_blk)
+		(macro exec_all_cmd_files ((type ARG1))
+			(allow ARG1 cmd_obj_type_attribute
+				exec_file_perms)))
+
 	(macro cmd_obj_type ((type ARG1))
-		(typeattributeset obj_type_attribute ARG1))
+		(typeattributeset cmd_obj_type_attribute ARG1))
 
 	(macro read_cmd ((type ARG1))
 		(call file.search_data (ARG1))
@@ -122,41 +128,41 @@
 
 	(macro exec_all_cmd_files ((type ARG1))
 		(call search_cmd (ARG1))
-		(allow ARG1 obj_type_attribute exec_file_perms))
+		(allow ARG1 cmd_obj_type_attribute exec_file_perms))
 
 	(macro dontaudit_mmap_all_cmd_files ((type ARG1))
-		(dontaudit ARG1 obj_type_attribute mmap_file_perms))
+		(dontaudit ARG1 cmd_obj_type_attribute mmap_file_perms))
 
 	(macro mmap_all_cmd_files ((type ARG1))
 		(call search_cmd (ARG1))
-		(allow ARG1 obj_type_attribute mmap_file_perms))
+		(allow ARG1 cmd_obj_type_attribute mmap_file_perms))
 
 	(macro read_all_cmd_files ((type ARG1))
 		(call search_cmd (ARG1))
-		(allow ARG1 obj_type_attribute read_file_perms))
+		(allow ARG1 cmd_obj_type_attribute read_file_perms))
 
 	(macro manage_all_cmd_files ((type ARG1))
 		(call manage_files_pattern (ARG1 cmd_file
-			obj_type_attribute)))
+			cmd_obj_type_attribute)))
 
 	(macro getattr_cmd_files ((type ARG1))
 		(call search_cmd (ARG1))
 		(allow ARG1 cmd_file (file (getattr))))
 
 	(macro dontaudit_getattr_all_cmd_files ((type ARG1))
-		(dontaudit ARG1 obj_type_attribute (file (getattr))))
+		(dontaudit ARG1 cmd_obj_type_attribute (file (getattr))))
 
 	(macro getattr_all_cmd_files ((type ARG1))
 		(call search_cmd (ARG1))
-		(allow ARG1 obj_type_attribute (file (getattr))))
+		(allow ARG1 cmd_obj_type_attribute (file (getattr))))
 
 	(macro setattr_all_cmd_files ((type ARG1))
 		(call search_cmd (ARG1))
-		(allow ARG1 obj_type_attribute (file (setattr))))
+		(allow ARG1 cmd_obj_type_attribute (file (setattr))))
 
 	(macro relabel_all_cmd_files ((type ARG1))
 		(call search_cmd (ARG1))
-		(allow ARG1 obj_type_attribute relabel_file_perms))
+		(allow ARG1 cmd_obj_type_attribute relabel_file_perms))
 
 	(macro shell_obj_entry_subj ((type ARG1))
 		(call subj.entry (ARG1 shell.cmd_file)))
@@ -182,10 +188,10 @@
 		(allow ARG1 shell.cmd_file mmap_file_perms))
 
 	(macro dontaudit_audit_access_all_cmd_files ((type ARG1))
-		(dontaudit ARG1 obj_type_attribute (file (audit_access))))
+		(dontaudit ARG1 cmd_obj_type_attribute (file (audit_access))))
 
 	(macro audit_exec_access_all_cmd_files ((type ARG1))
-		(allow ARG1 obj_type_attribute (file (execute))))
+		(allow ARG1 cmd_obj_type_attribute (file (execute))))
 
 	(macro dontaudit_audit_access_cmd_files ((type ARG1))
 		(dontaudit ARG1 cmd_file (file (audit_access))))
@@ -213,9 +219,9 @@
 (block cmd
 	(blockinherit obj_blk)
 
-	(typeattribute obj_type_attribute)
+	(typeattribute cmd_obj_type_attribute)
 
-	(call file.file_obj_type (obj_type_attribute)))
+	(call file.file_obj_type (cmd_obj_type_attribute)))
 
 (block shell
 	(blockinherit cmd.obj_blk))
