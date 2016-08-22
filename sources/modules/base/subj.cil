@@ -98,6 +98,11 @@
 		(macro ptrace ((type ARG1))
 			(allow ARG1 subj (process (ptrace)))))
 
+	(block dontaudit_link_keyring_blk
+		(blockabstract dontaudit_link_keyring_blk)
+		(macro dontaudit_link_keyring ((type ARG1))
+			(dontaudit ARG1 subj link_key_perms)))
+
 	(block link_keyring_blk
 		(blockabstract link_keyring_blk)
 		(macro link_keyring ((type ARG1))
@@ -254,6 +259,11 @@
 		(macro create_keyring_all_subj ((type ARG1))
 			(allow ARG1 self (process (setkeycreate)))
 			(allow ARG1 subj_type_attribute create_key_perms)))
+
+	(block dontaudit_link_keyring_all_blk
+		(blockabstract dontaudit_link_keyring_all_blk)
+		(macro dontaudit_link_keyring_all_subj ((type ARG1))
+			(dontaudit ARG1 subj_type_attribute link_key_perms)))
 
 	(block link_keyring_all_blk
 		(blockabstract link_keyring_all_blk)
