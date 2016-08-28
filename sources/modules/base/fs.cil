@@ -587,6 +587,9 @@
 	(macro dontaudit_relabelfrom_dosfs_fs ((type ARG1))
 		(dontaudit ARG1 dosfs.fs (filesystem (relabelfrom))))
 
+	(macro relabelfrom_dosfs_fs ((type ARG1))
+		(allow ARG1 dosfs.fs (filesystem (relabelfrom))))
+
 	(macro dontaudit_associate_dosfs ((type ARG1))
 		(dontaudit ARG1 dosfs.fs (filesystem (associate))))
 
