@@ -5876,6 +5876,7 @@
 	(macro delete_all_tmpfs ((type ARG1))
 		(call fs.del_entry_tmpfs_dirs (ARG1))
 		(allow ARG1 tmpfs_obj_type_attribute delete_file_perms)
+		(allow ARG1 tmpfs_obj_type_attribute del_entry_dir_perms)
 		(allow ARG1 tmpfs_obj_type_attribute delete_dir_perms)
 		(allow ARG1 tmpfs_obj_type_attribute delete_fifo_file_perms)
 		(allow ARG1 tmpfs_obj_type_attribute delete_sock_file_perms)
