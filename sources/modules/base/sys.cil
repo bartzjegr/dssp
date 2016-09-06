@@ -1108,6 +1108,9 @@
 		(false
 			(userrole id object_r)))
 
+	(optional sys_optional_bluetoothd
+		(call bluetoothd.write_inherited_socket (subj)))
+
 	(optional sys_optional_dracut_initramfs
 		(call dracut_initramfs.list_runtime (subj)))
 
