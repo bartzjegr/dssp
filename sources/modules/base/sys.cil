@@ -1134,6 +1134,9 @@
 		(call plymouthd.manage_runtime_files (subj))
 		(call plymouthd.manage_var_lib_files (subj)))
 
+	(optional sys_optional_powertop
+		(call powertop.auto_subj_type_transition (subj)))
+
 	(optional sys_optional_sd
 		(call subj.dynamic_type_transition_subj_type (subj))
 		(call sd.dynamic_subj_type_transition (subj))
