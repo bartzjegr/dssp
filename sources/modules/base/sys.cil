@@ -1071,7 +1071,7 @@
 	(call fs.manage_devtmpfs_dirs (subj))
 	(call fs.manage_devtmpfs_lnk_files (subj))
 	(call fs.mounton_rootfs_dirs (subj))
-	(call fs.read_debugfs (subj))
+	(call fs.trace_client_subj_type (subj))
 	(call fs.search_tmpfs (subj))
 
 	(call sec.compute_create_context (subj))
@@ -1133,9 +1133,6 @@
 		(call plymouth.read_config (subj))
 		(call plymouthd.manage_runtime_files (subj))
 		(call plymouthd.manage_var_lib_files (subj)))
-
-	(optional sys_optional_powertop
-		(call powertop.auto_subj_type_transition (subj)))
 
 	(optional sys_optional_sd
 		(call subj.dynamic_type_transition_subj_type (subj))
