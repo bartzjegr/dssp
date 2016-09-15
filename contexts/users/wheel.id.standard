@@ -1,3 +1,4 @@
+sys.role:crond.subj wheel.role:wheel.subj
 wheel.role:wheel_sudo.subj wheel.role:wheel.subj
 sys.role:cockpitsess.subj wheel.role:wheel_cockpitbridge.subj
 sys.role:gdm.subj wheel.role:wheel_gdmuser.subj

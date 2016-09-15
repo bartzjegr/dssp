@@ -1,3 +1,4 @@
+sys.role:crond.subj exempt.role:exempt.subj sysadm.role:sysadm.subj wheel.role:wheel.subj user.role:user.subj sys.role:sys_cronjob.subj
 sys.role:gdm.subj exempt.role:exempt.subj sysadm.role:sysadm_gdmuser.subj wheel.role:wheel_gdmuser.subj user.role:user_gdmuser.subj
 sys.role:login.subj exempt.role:exempt.subj sysadm.role:sysadm.subj wheel.role:wheel.subj user.role:user.subj
 sys.role:sd.subj exempt.role:exempt.subj sysadm.role:sysadm_sduser.subj wheel.role:wheel_sduser.subj user.role:user_sduser.subj

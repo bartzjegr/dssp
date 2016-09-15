@@ -1,3 +1,4 @@
+sys.role:crond.subj sysadm.role:sysadm.subj
 sysadm.role:sysadm_sudo.subj sysadm.role:sysadm.subj
 sys.role:cockpitsess.subj sysadm.role:sysadm_cockpitbridge.subj
 sys.role:gdm.subj sysadm.role:sysadm_gdmuser.subj

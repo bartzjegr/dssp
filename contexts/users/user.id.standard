@@ -1,3 +1,4 @@
+sys.role:crond.subj user.role:user.subj
 sys.role:gdm.subj user.role:user_gdmuser.subj
 sys.role:login.subj user.role:user.subj
 sys.role:sd.subj user.role:user_sduser.subj
