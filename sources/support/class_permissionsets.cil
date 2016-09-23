@@ -1,17 +1,13 @@
 (classpermission all_security_perms_except_load_policy_and_setenforce)
 (classpermissionset all_security_perms_except_load_policy_and_setenforce
-	(security (compute_av compute_create compute_member check_context
-		compute_relabel compute_user setbool setsecparam
-			setcheckreqprot read_policy validate_trans)))
+	(security (not (load_policy setenforce))))
 
 (classpermission
 	all_process_perms_except_transition_dyntransition_setcurrent_execmem_execstack_and_execheap)
 (classpermissionset
 	all_process_perms_except_transition_dyntransition_setcurrent_execmem_execstack_and_execheap
-	(process (fork sigchld sigkill sigstop signull setsched ptrace signal
-		getsched getsession getpgid setpgid getcap setcap share getattr
-			setexec setfscreate noatsecure siginh setrlimit
-				rlimitinh setkeycreate setsockcreate)))
+	(process (not (transition dyntransition setcurrent execmem execstack
+		execheap))))
 
 (classpermission signal_perms)
 (classpermissionset signal_perms (process (sigchld sigkill sigstop signull
@@ -21,44 +17,24 @@
 	all_capability_perms_except_sys_module_sys_ptrace_and_sys_nice)
 (classpermissionset
 	all_capability_perms_except_sys_module_sys_ptrace_and_sys_nice
-	(capability (chown dac_override dac_read_search fowner fsetid kill
-		setgid setuid setpcap linux_immutable net_bind_service
-			net_broadcast net_admin net_raw ipc_lock ipc_owner
-				sys_rawio sys_chroot sys_pacct sys_admin
-					sys_boot sys_resource sys_time
-						sys_tty_config mknod
-							lease audit_write
-								audit_control
-									setfcap)))
+	(capability (not (sys_module sys_ptrace sys_nice))))
 
 (classpermission
 	all_cap_userns_perms_except_sys_module_sys_ptrace_and_sys_nice)
 (classpermissionset
 	all_cap_userns_perms_except_sys_module_sys_ptrace_and_sys_nice
-	(cap_userns (chown dac_override dac_read_search fowner fsetid kill
-		setgid setuid setpcap linux_immutable net_bind_service
-			net_broadcast net_admin net_raw ipc_lock ipc_owner
-				sys_rawio sys_chroot sys_pacct sys_admin
-					sys_boot sys_resource sys_time
-						sys_tty_config mknod
-							lease audit_write
-								audit_control
-									setfcap)))
+	(cap_userns (not (sys_module sys_ptrace sys_nice))))
+
 (classpermission mount_fs_perms)
 (classpermissionset mount_fs_perms (filesystem (mount remount unmount
 	getattr)))
 
 (classpermission all_file_perms_except_getattr)
-(classpermissionset all_file_perms_except_getattr (file (ioctl read write
-		create setattr lock relabelfrom relabelto append unlink link
-			rename execute quotaon mounton audit_access open
-				execmod execute_no_trans entrypoint)))
+(classpermissionset all_file_perms_except_getattr (file (not (getattr))))
 
 (classpermission all_file_perms_except_mounton_execmod_and_entrypoint)
 (classpermissionset all_file_perms_except_mounton_execmod_and_entrypoint
-	(file (ioctl read write create getattr setattr lock relabelfrom
-		relabelto append unlink link rename execute quotaon
-			audit_access open execute_no_trans)))
+	(file (not (mounton execmod entrypoint))))
 
 (classpermission create_file_perms)
 (classpermissionset create_file_perms (file (getattr create open)))
@@ -82,10 +58,7 @@
 (classpermissionset search_dir_perms (dir (getattr search open)))
 
 (classpermission all_dir_perms_except_execmod)
-(classpermissionset all_dir_perms_except_execmod (dir (ioctl read write create
-	mounton getattr setattr lock relabelfrom relabelto append unlink link
-		rename execute quotaon audit_access open add_name remove_name
-			reparent search rmdir)))
+(classpermissionset all_dir_perms_except_execmod (dir (not (execmod))))
 
 (classpermission create_dir_perms)
 (classpermissionset create_dir_perms (dir (getattr create open)))
@@ -110,8 +83,7 @@
 
 (classpermission all_lnk_file_perms_except_mounton_and_execmod)
 (classpermissionset all_lnk_file_perms_except_mounton_and_execmod (lnk_file
-	(ioctl read write create getattr setattr lock relabelfrom relabelto
-		append unlink link rename execute quotaon audit_access open)))
+	(not (mounton execmod))))
 
 (classpermission create_lnk_file_perms)
 (classpermissionset create_lnk_file_perms (lnk_file (create getattr)))
@@ -135,8 +107,7 @@
 
 (classpermission all_chr_file_perms_except_mounton_and_execmod)
 (classpermissionset all_chr_file_perms_except_mounton_and_execmod (chr_file
-	(ioctl read write create getattr setattr lock relabelfrom relabelto
-		append unlink link rename execute quotaon audit_access open)))
+	(not (mounton execmod))))
 
 (classpermission create_chr_file_perms)
 (classpermissionset create_chr_file_perms (chr_file (getattr create open)))
@@ -160,8 +131,7 @@
 
 (classpermission all_blk_file_perms_except_mounton_and_execmod)
 (classpermissionset all_blk_file_perms_except_mounton_and_execmod (blk_file
-	(ioctl read write create getattr setattr lock relabelfrom relabelto
-		append unlink link rename execute quotaon audit_access open)))
+	(not (mounton execmod))))
 
 (classpermission create_blk_file_perms)
 (classpermissionset create_blk_file_perms (blk_file (getattr create open)))
@@ -185,8 +155,7 @@
 
 (classpermission all_sock_file_perms_except_mounton_and_execmod)
 (classpermissionset all_sock_file_perms_except_mounton_and_execmod (sock_file
-	(ioctl read write create getattr setattr lock relabelfrom relabelto
-		append unlink link rename execute quotaon audit_access open)))
+	(not (mounton execmod))))
 
 (classpermission create_sock_file_perms)
 (classpermissionset create_sock_file_perms (sock_file (getattr create open)))
@@ -210,8 +179,7 @@
 
 (classpermission all_fifo_file_perms_except_mounton_and_execmod)
 (classpermissionset all_fifo_file_perms_except_mounton_and_execmod (fifo_file
-	(ioctl read write create getattr setattr lock relabelfrom relabelto
-		append unlink link rename execute quotaon audit_access open)))
+	(not (mounton execmod))))
 
 (classpermission create_fifo_file_perms)
 (classpermissionset create_fifo_file_perms (fifo_file (getattr create open)))
@@ -286,11 +254,11 @@
 
 (classpermission all_capability2_perms_except_mac_override_and_mac_admin)
 (classpermissionset all_capability2_perms_except_mac_override_and_mac_admin
-	(capability2 (audit_read syslog wake_alarm block_suspend)))
+	(capability2 (not (mac_override mac_admin))))
 
 (classpermission all_cap2_userns_perms_except_mac_override_and_mac_admin)
 (classpermissionset all_cap2_userns_perms_except_mac_override_and_mac_admin
-	(cap2_userns (audit_read syslog wake_alarm block_suspend)))
+	(cap2_userns (not (mac_override mac_admin))))
 
 (classpermission read_file_perms)
 (classpermission read_inherited_file_perms)
