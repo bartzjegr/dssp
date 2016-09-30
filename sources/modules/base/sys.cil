@@ -1034,7 +1034,7 @@
 	(blockinherit file.var_log_obj_blk)
 
 	(allow subj self (capability (sys_tty_config sys_admin sys_nice
-		net_admin net_bind_service)))
+		net_admin net_bind_service dac_override)))
 	(allow subj self (capability2 (block_suspend)))
 	(allow subj self (process (setsched)))
 	(allow subj self create_unix_stream_socket_perms)
