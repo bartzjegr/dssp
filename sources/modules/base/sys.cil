@@ -30,6 +30,8 @@
 			systemlow)))
 		(context mdstat (sys.id sys.role mdstat.proc (systemlow
 			systemlow)))
+		(context meminfo (sys.id sys.role meminfo.proc (systemlow
+			systemlow)))
 		(context memory_sysfs (sys.id sys.role memory_sysfs.sysfs
 			(systemlow systemlow)))
 		(context mtrr (sys.id sys.role mtrr.proc (systemlow
@@ -81,6 +83,8 @@
 		(context kernel (sys.id object_r kernel.sysctl (systemlow
 			systemlow)))
 		(context mdstat (sys.id object_r mdstat.proc (systemlow
+			systemlow)))
+		(context meminfo (sys.id object_r meminfo.proc (systemlow
 			systemlow)))
 		(context memory_sysfs (sys.id object_r memory_sysfs.sysfs
 			(systemlow systemlow)))
@@ -165,6 +169,7 @@
 (genfscon "proc" "/kcore" kcore)
 (genfscon "proc" "/kmsg" kmsg_proc)
 (genfscon "proc" "/mdstat" mdstat)
+(genfscon "proc" "/meminfo" meminfo)
 (genfscon "proc" "/mtrr" mtrr)
 (genfscon "proc" "/net" net_proc)
 (genfscon "proc" "/sys/crypto" crypto)
@@ -699,6 +704,10 @@
 	(macro read_mdstat_proc_files ((type ARG1))
 		(call fs.search_proc (ARG1))
 		(allow ARG1 mdstat.proc read_file_perms))
+
+	(macro read_meminfo_proc_files ((type ARG1))
+		(call fs.search_proc (ARG1))
+		(allow ARG1 meminfo.proc read_file_perms))
 
 	(macro search_net_proc ((type ARG1))
 		(call fs.search_proc (ARG1))
@@ -1370,6 +1379,9 @@
 	(blockinherit sys.proc_obj_blk))
 
 (block mdstat
+	(blockinherit sys.proc_obj_blk))
+
+(block meminfo
 	(blockinherit sys.proc_obj_blk))
 
 (block mtrr
