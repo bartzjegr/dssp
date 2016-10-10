@@ -884,6 +884,24 @@
 	(macro rw_invalid_dirs ((type ARG1))
 		(allow ARG1 invalid.isid rw_dir_perms))
 
+	(macro manage_invalid ((type ARG1))
+		(allow ARG1 invalid.isid manage_file_perms)
+		(allow ARG1 invalid.isid manage_dir_perms)
+		(allow ARG1 invalid.isid manage_fifo_file_perms)
+		(allow ARG1 invalid.isid manage_lnk_file_perms)
+		(allow ARG1 invalid.isid manage_sock_file_perms)
+		(allow ARG1 invalid.isid manage_blk_file_perms)
+		(allow ARG1 invalid.isid manage_chr_file_perms))
+
+	(macro read_invalid ((type ARG1))
+		(allow ARG1 invalid.isid read_file_perms)
+		(allow ARG1 invalid.isid read_dir_perms)
+		(allow ARG1 invalid.isid read_fifo_file_perms)
+		(allow ARG1 invalid.isid read_lnk_file_perms)
+		(allow ARG1 invalid.isid read_sock_file_perms)
+		(allow ARG1 invalid.isid read_blk_file_perms)
+		(allow ARG1 invalid.isid read_chr_file_perms))
+
 	(macro relabelfrom_invalid ((type ARG1))
 		(allow ARG1 invalid.isid relabelfrom_file_perms)
 		(allow ARG1 invalid.isid relabelfrom_dir_perms)
@@ -893,6 +911,15 @@
 		(allow ARG1 invalid.isid relabelfrom_blk_file_perms)
 		(allow ARG1 invalid.isid relabelfrom_chr_file_perms))
 
+	(macro relabel_invalid ((type ARG1))
+		(allow ARG1 invalid.isid relabel_file_perms)
+		(allow ARG1 invalid.isid relabel_dir_perms)
+		(allow ARG1 invalid.isid relabel_fifo_file_perms)
+		(allow ARG1 invalid.isid relabel_lnk_file_perms)
+		(allow ARG1 invalid.isid relabel_sock_file_perms)
+		(allow ARG1 invalid.isid relabel_blk_file_perms)
+		(allow ARG1 invalid.isid relabel_chr_file_perms))
+
 	(macro relabelfrom_invalid_dirs ((type ARG1))
 		(allow ARG1 invalid.isid relabelfrom_dir_perms))
 
@@ -901,6 +928,15 @@
 
 	(macro send_signull_invalid ((type ARG1))
 		(allow ARG1 invalid.isid (process (signull))))
+
+	(macro getattr_invalid_fs ((type ARG1))
+		(allow ARG1 invalid.isid (filesystem (getattr))))
+
+	(macro mount_invalid_fs ((type ARG1))
+		(allow ARG1 invalid.isid (filesystem (mount))))
+
+	(macro unmount_invalid_fs ((type ARG1))
+		(allow ARG1 invalid.isid (filesystem (unmount))))
 
 	(macro search_unlabeled ((type ARG1))
 		(allow ARG1 unlabeled.isid search_dir_perms))

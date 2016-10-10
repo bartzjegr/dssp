@@ -912,6 +912,9 @@
 	(macro relabelfrom_rootfs_dirs ((type ARG1))
 		(call relabelfrom_dirs_pattern (ARG1 rootfs.fs rootfs.fs)))
 
+	(macro relabelto_rootfs_dirs ((type ARG1))
+		(call relabelto_dirs_pattern (ARG1 rootfs.fs rootfs.fs)))
+
 	(macro setattr_rootfs_dirs ((type ARG1))
 		(allow ARG1 rootfs.fs (dir (setattr))))
 

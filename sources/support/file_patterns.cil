@@ -94,6 +94,10 @@
 	(allow ARG1 ARG2 search_dir_perms)
 	(allow ARG1 ARG3 relabelfrom_dir_perms))
 
+(macro relabelto_dirs_pattern ((type ARG1)(type ARG2)(type ARG3))
+	(allow ARG1 ARG2 search_dir_perms)
+	(allow ARG1 ARG3 relabelto_dir_perms))
+
 (macro relabel_dirs_pattern ((type ARG1)(type ARG2)(type ARG3))
 	(allow ARG1 ARG2 search_dir_perms)
 	(allow ARG1 ARG3 relabel_dir_perms))
