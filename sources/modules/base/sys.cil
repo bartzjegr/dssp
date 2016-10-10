@@ -1498,6 +1498,6 @@
 			(capability (sys_nice sys_module)))
 		(allow sys.load_kernel_module_subj_type_attribute sys.subj
 			(process (setsched)))
-		; for compatibility with Linux =< 4.6
+		; for init_module() some components don't use finit_module()
 		(allow sys.load_kernel_module_subj_type_attribute self
 			(system (module_load))))))
