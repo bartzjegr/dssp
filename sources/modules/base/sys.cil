@@ -1500,7 +1500,8 @@
 (block sys_load_kernel_init_module
 	(blockinherit sec.bool_obj_blk)
 
-	(booleanif (sys_load_kernel_init_module) (true
+	(booleanif (and (sys_load_kernel_init_module)
+		(sys_load_kernel_module)) (true
 		(allow sys.load_kernel_module_subj_type_attribute self
 			(system (module_load))))))
 
