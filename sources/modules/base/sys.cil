@@ -50,6 +50,8 @@
 			systemlow)))
 		(context sysctl (sys.id sys.role sysctl.sysctl (systemlow
 			systemlow)))
+		(context sys_load_kernel_init_module (sys.id sys.role
+			sys_load_kernel_init_module.bool (systemlow systemlow)))
 		(context sys_load_kernel_module (sys.id sys.role
 			sys_load_kernel_module.bool (systemlow systemlow)))
 		(context sysrq (sys.id sys.role sysrq.proc (systemlow
@@ -104,6 +106,8 @@
 			systemlow)))
 		(context sysctl (sys.id object_r sysctl.sysctl (systemlow
 			systemlow)))
+		(context sys_load_kernel_init_module (sys.id object_r
+			sys_load_kernel_init_module.bool (systemlow systemlow)))
 		(context sys_load_kernel_module (sys.id object_r
 			sys_load_kernel_module.bool (systemlow systemlow)))
 		(context sysrq (sys.id object_r sysrq.proc (systemlow
@@ -195,6 +199,8 @@
 (genfscon "proc" "/sys/vm/mmap_min_addr" security)
 (genfscon "proc" "/sys/vm/overcommit_memory" vm_overcommit)
 (genfscon "proc" "/sys/vm" vm)
+(genfscon "selinuxfs" "/booleans/sys_load_kernel_init_module"
+	sys_load_kernel_init_module)
 (genfscon "selinuxfs" "/booleans/sys_load_kernel_module"
 	sys_load_kernel_module)
 (genfscon "sysfs" "/devices/system/cpu" cpu_sysfs)
@@ -1040,6 +1046,7 @@
 ; Policy
 ;
 
+(boolean sys_load_kernel_init_module true)
 (boolean sys_load_kernel_module true)
 
 (sid kernel)
@@ -1490,6 +1497,13 @@
 (block node_online_sysfs
 	(blockinherit sys.sysfs_obj_blk))
 
+(block sys_load_kernel_init_module
+	(blockinherit sec.bool_obj_blk)
+
+	(booleanif (sys_load_kernel_init_module) (true
+		(allow sys.load_kernel_module_subj_type_attribute self
+			(system (module_load))))))
+
 (block sys_load_kernel_module
 	(blockinherit sec.bool_obj_blk)
 
@@ -1497,7 +1511,4 @@
 		(allow sys.load_kernel_module_subj_type_attribute self
 			(capability (sys_nice sys_module)))
 		(allow sys.load_kernel_module_subj_type_attribute sys.subj
-			(process (setsched)))
-		; for init_module() some components don't use finit_module()
-		(allow sys.load_kernel_module_subj_type_attribute self
-			(system (module_load))))))
+			(process (setsched))))))
