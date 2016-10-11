@@ -349,16 +349,13 @@
 			(getattr))))
 
 	(macro dontaudit_link_keyring ((type ARG1))
-		(dontaudit ARG1 subj (key (search link))))
+		(dontaudit ARG1 subj link_key_perms))
 
 	(macro link_keyring ((type ARG1))
-		(allow ARG1 subj (key (search link))))
+		(allow ARG1 subj link_key_perms))
 
 	(macro read_keyring ((type ARG1))
-		(allow ARG1 subj (key (search read))))
-
-	(macro search_keyring ((type ARG1))
-		(allow ARG1 subj (key (search))))
+		(allow ARG1 subj read_key_perms))
 
 	(macro mounton_kmsg_proc_files ((type ARG1))
 		(allow ARG1 kmsg_proc.proc (file (mounton))))
