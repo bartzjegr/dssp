@@ -1121,6 +1121,7 @@
 	(call fs.manage_devtmpfs_lnk_files (subj))
 	(call fs.mounton_rootfs_dirs (subj))
 	(call fs.trace_client_subj_type (subj))
+	(call fs.read_sysfs (subj))
 	(call fs.search_tmpfs (subj))
 
 	(call sec.compute_create_context (subj))
