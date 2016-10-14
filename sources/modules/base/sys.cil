@@ -399,6 +399,9 @@
 	(macro mounton_sysctl_dirs ((type ARG1))
 		(allow ARG1 sysctl.sysctl (dir (mounton))))
 
+	(macro mounton_net_sysctl_dirs ((type ARG1))
+		(allow ARG1 net_sysctl.sysctl (dir (mounton))))
+
 	(macro mounton_kernel_sysctl_files ((type ARG1))
 		(allow ARG1 kernel.sysctl (file (mounton))))
 
