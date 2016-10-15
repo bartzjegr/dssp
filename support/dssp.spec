@@ -163,6 +163,9 @@ semodule -p %{buildroot} --priority=100 \
 %endif
 
 %if %{BUILD_MCS}
+# FIXME
+sed -i 's/(tunable enable_rbacsep false)/(tunable enable_rbacsep true)/' sources/global_tunables.cil
+sed -i 's/(tunable enable_mcs false)/(tunable enable_mcs true)/' sources/global_tunables.cil
 %{__mkdir} -p %{buildroot}%{_sysconfdir}/selinux/dssp-mcs/logins
 %{__mkdir} -p %{buildroot}%{_sysconfdir}/selinux/dssp-mcs/contexts
 install -m0644 contexts/customizable_types.mcs %{buildroot}%{_sysconfdir}/selinux/dssp-mcs/contexts/customizable_types
