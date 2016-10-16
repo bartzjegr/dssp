@@ -24,6 +24,7 @@ Source0: https://github.com/Defensec/dssp/archive/%{commit0}/dssp-%{commit0}.tar
 Source1: https://github.com/Defensec/dssp-contrib/archive/%{commit1}/dssp-contrib-%{commit1}.tar.gz
 URL: https://github.com/Defensec/dssp/wiki
 Requires: policycoreutils
+Conflicts: selinux-policy
 BuildRequires: policycoreutils >= %{POLICYCOREUTILSVER}
 BuildArch: noarch
 
