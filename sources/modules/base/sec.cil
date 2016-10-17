@@ -89,8 +89,8 @@
 		(dontaudit ARG1 securityfs.fs write_file_perms))
 
 	(macro compute_access_vector ((type ARG1))
-		(call fs.search_sysfs (ARG1))
-		(call rw_files_pattern (ARG1 securityfs.fs securityfs.fs))
+		(call list_fs (ARG1))
+		(allow ARG1 securityfs.fs rw_file_perms)
 		(allow ARG1 securityfs.fs (security (compute_av))))
 
 	(macro compute_create_context ((type ARG1))
