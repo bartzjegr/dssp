@@ -236,7 +236,7 @@ if [ $1 = 0 ]; then
 fi
 exit 0
 
-%triggerin -- pcre2
+%triggerin -- pcre
 selinuxenabled && semodule -nB
 
 %changelog
