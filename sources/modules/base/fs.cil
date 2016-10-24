@@ -658,6 +658,20 @@
 		(call search_sysfs (ARG1))
 		(call read_files_pattern (ARG1 efivarfs.fs efivarfs.fs)))
 
+	(macro read_efivarfs ((type ARG1))
+		(call search_proc (ARG1))
+		(call search_sysfs (ARG1))
+		(allow ARG1 efivarfs.fs list_dir_perms)
+		(allow ARG1 efivarfs.fs read_file_perms)
+		(allow ARG1 efivarfs.fs read_lnk_file_perms))
+
+	(macro manage_efivarfs ((type ARG1))
+		(call rw_proc_dirs (ARG1))
+		(call rw_sysfs_dirs (ARG1))
+		(allow ARG1 efivarfs.fs manage_dir_perms)
+		(allow ARG1 efivarfs.fs manage_file_perms)
+		(allow ARG1 efivarfs.fs manage_lnk_file_perms))
+
 	(macro dontaudit_audit_access_fuse_dirs ((type ARG1))
 		(dontaudit ARG1 fuse_fs.fs (dir (audit_access))))
 
@@ -964,6 +978,9 @@
 
 	(macro read_sysfs_files ((type ARG1))
 		(call read_files_pattern (ARG1 sysfs.fs sysfs.fs)))
+
+	(macro rw_sysfs_dirs ((type ARG1))
+		(call rw_dirs_pattern (ARG1 sysfs.fs sysfs.fs)))
 
 	(macro rw_sysfs_files ((type ARG1))
 		(call rw_files_pattern (ARG1 sysfs.fs sysfs.fs)))
