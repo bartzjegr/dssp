@@ -979,6 +979,9 @@
 	(macro read_sysfs_files ((type ARG1))
 		(call read_files_pattern (ARG1 sysfs.fs sysfs.fs)))
 
+	(macro manage_sysfs_files ((type ARG1))
+		(call manage_files_pattern (ARG1 sysfs.fs sysfs.fs)))
+
 	(macro rw_sysfs_dirs ((type ARG1))
 		(call rw_dirs_pattern (ARG1 sysfs.fs sysfs.fs)))
 
