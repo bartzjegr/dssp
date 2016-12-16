@@ -794,7 +794,7 @@
 		(allow ARG1 devtty.dev rw_chr_file_perms))
 
 	(macro rw_dri ((type ARG1))
-		(call fs.search_devtmpfs (ARG1))
+		(call fs.list_devtmpfs (ARG1))
 		(allow ARG1 dri.dev rw_chr_file_perms))
 
 	(macro rw_dpaux ((type ARG1))
