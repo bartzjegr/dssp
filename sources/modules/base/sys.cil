@@ -402,6 +402,15 @@
 	(macro mounton_net_sysctl_dirs ((type ARG1))
 		(allow ARG1 net_sysctl.sysctl (dir (mounton))))
 
+	(macro mounton_irq_sysctl_dirs ((type ARG1))
+		(allow ARG1 irq.sysctl (dir (mounton))))
+
+	(macro mounton_mtrr_proc_files ((type ARG1))
+		(allow ARG1 mtrr.proc (file (mounton))))
+
+	(macro mounton_sysrq_proc_files ((type ARG1))
+		(allow ARG1 sysrq.proc (file (mounton))))
+
 	(macro mounton_kernel_sysctl_files ((type ARG1))
 		(allow ARG1 kernel.sysctl (file (mounton))))
 

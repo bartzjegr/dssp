@@ -444,6 +444,9 @@
 	(macro getattr_devpts_fs ((type ARG1))
 		(allow ARG1 devpts.fs (filesystem (getattr))))
 
+	(macro unmount_devpts_fs ((type ARG1))
+		(allow ARG1 devpts.fs (filesystem (unmount))))
+
 	(macro getattr_devpts_chr_files ((type ARG1))
 		(call search_devtmpfs (ARG1))
 		(call getattr_chr_files_pattern (ARG1 devpts.fs devpts.fs)))
@@ -730,6 +733,9 @@
 	(macro unmount_fuse_fs ((type ARG1))
 		(allow ARG1 fuse_fs.fs (filesystem (unmount))))
 
+	(macro unmount_hugetlbfs_fs ((type ARG1))
+		(allow ARG1 hugetlbfs.fs (filesystem (unmount))))
+
 	(macro search_hugetlbfs ((type ARG1))
 		(call search_devtmpfs (ARG1))
 		(allow ARG1 hugetlbfs.fs search_dir_perms))
@@ -871,6 +877,9 @@
 
 	(macro mounton_proc_dirs ((type ARG1))
 		(allow ARG1 proc.fs (dir (mounton))))
+
+	(macro mounton_proc_files ((type ARG1))
+		(allow ARG1 proc.fs (file (mounton))))
 
 	(macro search_pstore ((type ARG1))
 		(call search_sysfs (ARG1))
