@@ -414,6 +414,9 @@
 	(macro mounton_kernel_sysctl_files ((type ARG1))
 		(allow ARG1 kernel.sysctl (file (mounton))))
 
+    (macro write_unix_dgram_sockets ((type ARG1))
+        (allow ARG1 subj write_unix_dgram_socket_perms))
+
 	(macro rw_unix_dgram_sockets ((type ARG1))
 		(allow ARG1 subj rw_unix_dgram_socket_perms))
 
@@ -1099,6 +1102,7 @@
 	(allow subj self (capability2 (block_suspend)))
 	(allow subj self (process (setsched)))
 	(allow subj self create_unix_stream_socket_perms)
+    (allow subj self (unix_dgram_socket (sendto)))
 
 	(allow subj var_log_file manage_file_perms)
 	(call file.var_log_obj_type_transition (subj var_log_file file
