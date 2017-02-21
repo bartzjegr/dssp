@@ -414,9 +414,6 @@
 	(macro mounton_kernel_sysctl_files ((type ARG1))
 		(allow ARG1 kernel.sysctl (file (mounton))))
 
-    (macro write_unix_dgram_sockets ((type ARG1))
-        (allow ARG1 subj write_unix_dgram_socket_perms))
-
 	(macro rw_unix_dgram_sockets ((type ARG1))
 		(allow ARG1 subj rw_unix_dgram_socket_perms))
 
