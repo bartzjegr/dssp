@@ -26,7 +26,7 @@ Like CIL, DSSP is not designed to be user friendly, but that does not mean that 
 
 If you value integrity on the desktop, if you have complex integrity requirements, or if you just want to build on a flexible foundation and if you are willing to invest in learning how to effectively and efficiently use SELinux and speak CIL, then DSSP may just be what you are looking for.
 
-DSSP is also very suitable for embedded environments and shares CIL's motto: "less is more."
+DSSP is also very suitable for embedded environments and shares CIL's motto: "less is more"
 
 [1] https://github.com/SELinuxProject/selinux/blob/master/secilc/docs/cil_introduction.md
 
